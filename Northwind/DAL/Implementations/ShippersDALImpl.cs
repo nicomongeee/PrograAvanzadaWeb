@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Implementations
 {
-    public class ShippersDALImpl : DALGenerioImpl<Shippers>, IShippersDAL
+    public class ShippersDALImpl : DALGenerioImpl<Shipper>, IShippersDAL
     {
         NorthwindContext _context;
 

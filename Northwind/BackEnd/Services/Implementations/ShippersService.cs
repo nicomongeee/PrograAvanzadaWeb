@@ -17,7 +17,7 @@ namespace BackEnd.Services.Implementations
             _unidadDeTrabajo = unidadDeTrabajo;
         }
 
-        ShippersModel Convertir(Shippers shippers)
+        ShippersModel Convertir(Shipper shippers)
         {
             return new ShippersModel
             {
@@ -27,9 +27,9 @@ namespace BackEnd.Services.Implementations
             };
         }
 
-        Shippers Convertir(ShippersModel shippers)
+        Shipper Convertir(ShippersModel shippers)
         {
-            return new Shippers
+            return new Shipper
             {
                 ShipperId = shippers.ShipperId,
                 CompanyName = shippers.CompanyName,
@@ -39,7 +39,7 @@ namespace BackEnd.Services.Implementations
 
         public bool AddShippers(ShippersModel shippers)
         {
-            Shippers entity = Convertir(shippers);
+            Shipper entity = Convertir(shippers);
             _unidadDeTrabajo._shippersDAL.Add(entity);
             return _unidadDeTrabajo.Complete();
         }

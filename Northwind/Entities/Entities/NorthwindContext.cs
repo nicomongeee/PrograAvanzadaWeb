@@ -59,7 +59,7 @@ public partial class NorthwindContext : DbContext
 
     public virtual DbSet<SalesTotalsByAmount> SalesTotalsByAmounts { get; set; }
 
-    public virtual DbSet<Shippers> Shippers { get; set; }
+    public virtual DbSet<Shipper> Shippers { get; set; }
 
     public virtual DbSet<SummaryOfSalesByQuarter> SummaryOfSalesByQuarters { get; set; }
 
@@ -536,7 +536,7 @@ public partial class NorthwindContext : DbContext
             entity.Property(e => e.ShippedDate).HasColumnType("datetime");
         });
 
-        modelBuilder.Entity<Shippers>(entity =>
+        modelBuilder.Entity<Shipper>(entity =>
         {
             entity.Property(e => e.ShipperId).HasColumnName("ShipperID");
             entity.Property(e => e.CompanyName).HasMaxLength(40);
