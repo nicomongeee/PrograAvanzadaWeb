@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Entities.Entities;
 
-public partial class Shipper
+public partial class Shippers
 {
     public int ShipperId { get; set; }
 
