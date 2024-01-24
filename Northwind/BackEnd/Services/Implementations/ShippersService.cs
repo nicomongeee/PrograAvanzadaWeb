@@ -3,6 +3,7 @@ using BackEnd.Services.Interfaces;
 using DAL.Interfaces;
 using Entities.Entities;
 using System.ComponentModel.DataAnnotations;
+using System.Numerics;
 
 namespace BackEnd.Services.Implementations
 {
@@ -11,19 +12,34 @@ namespace BackEnd.Services.Implementations
 
         public IUnidadDeTrabajo _unidadDeTrabajo;
 
-        public ShippersService(IUnidadDeTrabajo unidadDeTrabajo) 
+        public ShippersService(IUnidadDeTrabajo unidadDeTrabajo)
         {
             _unidadDeTrabajo = unidadDeTrabajo;
         }
 
-        public bool AddShippers(ShippersModel shippers)
+        ShippersModel Convertir(Shippers shippers)
         {
-            Shippers entity = new Shippers
+            return new ShippersModel
             {
                 ShipperId = shippers.ShipperId,
                 CompanyName = shippers.CompanyName,
                 Phone = shippers.Phone
-        };
+            };
+        }
+
+        Shippers Convertir(ShippersModel shippers)
+        {
+            return new Shippers
+            {
+                ShipperId = shippers.ShipperId,
+                CompanyName = shippers.CompanyName,
+                Phone = shippers.Phone
+            };
+        }
+
+        public bool AddShippers(ShippersModel shippers)
+        {
+            Shippers entity = Convertir(shippers);
             _unidadDeTrabajo._shippersDAL.Add(entity);
             return _unidadDeTrabajo.Complete();
         }
@@ -37,18 +53,19 @@ namespace BackEnd.Services.Implementations
         {
             var entity = _unidadDeTrabajo._shippersDAL.Get(id);
 
-            ShippersModel shippersModel = new ShippersModel
-            {
-                ShipperId = entity.ShipperId,
-                CompanyName = entity.CompanyName,
-                Phone = entity.Phone
-            };
+            ShippersModel shippersModel = Convertir(entity);
             return shippersModel;
         }
 
         public IEnumerable<ShippersModel> GetShippers()
         {
-            throw new NotImplementedException();
+            var result = _unidadDeTrabajo._shippersDAL.GetAll();
+            List<ShippersModel> lista = new List<ShippersModel>();
+            foreach (var shippers in result)
+            {
+                lista.Add(Convertir(shippers));
+            }
+            return lista;
         }
 
         public bool UpdateShippers(ShippersModel shippers)

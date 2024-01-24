@@ -18,9 +18,9 @@ namespace BackEnd.Controllers
 
         // GET: api/<ShippersController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<ShippersModel> Get()
         {
-            return new string[] { "value1", "value2" };
+            return ShippersService.GetShippers();
         }
 
         // GET api/<ShippersController>/5

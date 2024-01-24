@@ -14,7 +14,9 @@ namespace DAL.Implementations
 
         private readonly NorthwindContext _context;
 
-        public UnidadDeTrabajo(IShippersDAL shippersDAL)
+        public UnidadDeTrabajo(NorthwindContext northwindContext,
+                               IShippersDAL shippersDAL
+                                )
         {
             _context = new NorthwindContext();
             _shippersDAL = shippersDAL;
