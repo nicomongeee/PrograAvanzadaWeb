@@ -10,7 +10,17 @@ namespace DAL.Implementations
 {
     public class UnidadDeTrabajo : IUnidadDeTrabajo
     {
+        public IShippersDAL _shippersDAL { get; }
+
         private readonly NorthwindContext _context;
+
+        public UnidadDeTrabajo(NorthwindContext context,
+                                IShippersDAL shippersDAL)
+        {
+            _context = context;
+            _shippersDAL = shippersDAL;
+        }
+
         public bool Complete()
         {
             try
