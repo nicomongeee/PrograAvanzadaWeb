@@ -46,7 +46,9 @@ namespace BackEnd.Services.Implementations
 
         public bool DeleteShippers(ShippersModel shippers)
         {
-            throw new NotImplementedException();
+            Shipper entity = Convertir(shippers);
+            _unidadDeTrabajo._shippersDAL.Remove(entity);
+            return _unidadDeTrabajo.Complete();
         }
 
         public ShippersModel GetById(int id)
@@ -70,7 +72,9 @@ namespace BackEnd.Services.Implementations
 
         public bool UpdateShippers(ShippersModel shippers)
         {
-            throw new NotImplementedException();
+            Shipper entity = Convertir(shippers);
+            _unidadDeTrabajo._shippersDAL.Update(entity);
+            return _unidadDeTrabajo.Complete();
         }
     }
 }
