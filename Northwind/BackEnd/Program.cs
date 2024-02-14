@@ -19,6 +19,7 @@ builder.Services.AddDbContext<NorthwindContext>();
 builder.Services.AddScoped<IUnidadDeTrabajo, UnidadDeTrabajo>();
 builder.Services.AddScoped<IShippersDAL, ShippersDALImpl>();
 builder.Services.AddScoped<IShippersService, ShippersService>();
+builder.Services.AddScoped<ISupplierDAL, SupplierDALImpl>();
 #endregion
 //
 
