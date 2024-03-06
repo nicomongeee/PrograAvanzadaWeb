@@ -8,8 +8,9 @@ namespace DAL.Interfaces
 {
     public interface IUnidadDeTrabajo : IDisposable
     {
-        IShippersDAL _shippersDAL { get; }
-        ISupplierDAL _supplierDAL { get; }  
+        ICategoryDAL _categoryDAL { get; }
+        ISupplierDAL _supplierDAL { get; }
+        IProductDAL _productDAL { get; }
         bool Complete();
     }
 }

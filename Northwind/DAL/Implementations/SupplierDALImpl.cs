@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DAL.Implementations
 {
-    public class SupplierDALImpl : DALGenerioImpl<Supplier>, ISupplierDAL
+    public class SupplierDALImpl : DALGenericoImpl<Supplier>, ISupplierDAL
     {
-        public SupplierDALImpl(NorthwindContext northwindContext) : base(northwindContext)
+        public SupplierDALImpl(NorthWindContext northWindContext) : base(northWindContext)
         {
         }
     }

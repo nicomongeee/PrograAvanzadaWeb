@@ -9,19 +9,22 @@ namespace BackEnd.Services.Implementations
     {
         public IUnidadDeTrabajo Unidad;
 
+
         SupplierModel Convertir(Supplier supplier)
         {
-            return new SupplierModel
-            {
+            return new SupplierModel 
+            { 
                 CompanyName = supplier.CompanyName,
                 SupplierId = supplier.SupplierId
             };
-
         }
+
         public SupplierService(IUnidadDeTrabajo unidad)
         {
-            Unidad = unidad;
+                Unidad = unidad;
         }
+
+
         public IEnumerable<SupplierModel> GetSuppliers()
         {
             var suppliers = Unidad._supplierDAL.GetAll();

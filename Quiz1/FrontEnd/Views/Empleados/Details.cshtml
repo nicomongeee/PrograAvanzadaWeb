@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FrontEnd.Models.EmpleadosViewModel>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<hr />
+@foreach (var item in Model)
+{
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => item.EmpleadoId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => item.EmpleadoId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => item.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => item.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => item.Salario)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => item.Salario)
+        </dd>
+
+        <dt class="col-sm-2">
+            Actions:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.ActionLink("Edit", "Edit", new { id = item.EmpleadoId }) |
+            @Html.ActionLink("Back to List", "Index", "Empleado")
+        </dd>
+    </dl>
+}

@@ -10,15 +10,16 @@ using System.Threading.Tasks;
 
 namespace DAL.Implementations
 {
-    public class DALGenerioImpl<TEntity> : IDALGenerico<TEntity> where TEntity : class
+    public class DALGenericoImpl<TEntity> : IDALGenerico<TEntity> where TEntity : class
     {
 
-        protected readonly NorthwindContext _Context;
+        protected readonly NorthWindContext _Context;
 
-        public DALGenerioImpl(NorthwindContext northwindContext)
+        public DALGenericoImpl(NorthWindContext northWindContext)
         {
-            _Context = northwindContext;
+            _Context = northWindContext;
         }
+
         public bool Add(TEntity entity)
         {
             try
@@ -26,8 +27,9 @@ namespace DAL.Implementations
                 _Context.Add(entity);
                 return true;
             }
-            catch(Exception)
+            catch (Exception)
             {
+
                 return false;
             }
         }
@@ -44,26 +46,30 @@ namespace DAL.Implementations
 
         public IEnumerable<TEntity> GetAll()
         {
+
+            
             return _Context.Set<TEntity>().ToList();
         }
 
         public bool Remove(TEntity entity)
         {
+
             try
             {
                 _Context.Set<TEntity>().Attach(entity);
                 _Context.Set<TEntity>().Remove(entity);
-
                 return true;
             }
             catch (Exception)
             {
+
                 return false;
             }
         }
 
         public bool Update(TEntity entity)
         {
+
             try
             {
                 _Context.Entry(entity).State = EntityState.Modified;
@@ -71,6 +77,7 @@ namespace DAL.Implementations
             }
             catch (Exception)
             {
+
                 return false;
             }
         }

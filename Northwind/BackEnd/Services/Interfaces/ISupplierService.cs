@@ -6,5 +6,6 @@ namespace BackEnd.Services.Interfaces
     public interface ISupplierService
     {
         IEnumerable<SupplierModel> GetSuppliers();
+
     }
 }

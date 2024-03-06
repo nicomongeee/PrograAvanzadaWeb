@@ -10,21 +10,25 @@ namespace DAL.Implementations
 {
     public class UnidadDeTrabajo : IUnidadDeTrabajo
     {
-        public IShippersDAL _shippersDAL { get; }
+
+        public ICategoryDAL _categoryDAL { get; }
         public ISupplierDAL _supplierDAL { get; }
+        public IProductDAL _productDAL { get; }
 
-        private readonly NorthwindContext _context;
+        private readonly NorthWindContext _context;
 
-        public UnidadDeTrabajo(NorthwindContext northwindContext,
-                               IShippersDAL shippersDAL,
-                               ISupplierDAL supplierDAL
-
+        public UnidadDeTrabajo(NorthWindContext northWindContext,
+                                ICategoryDAL categoryDAL,
+                                ISupplierDAL supplierDAL,
+                                IProductDAL productDAL
                                 )
         {
-            _context = new NorthwindContext();
-            _shippersDAL = shippersDAL;
+            _context = northWindContext;
+            _categoryDAL = categoryDAL;
             _supplierDAL = supplierDAL;
+            _productDAL = productDAL;
         }
+
 
         public bool Complete()
         {
@@ -35,7 +39,8 @@ namespace DAL.Implementations
             }
             catch (Exception)
             {
-                return false;
+
+               return false;
             }
         }
 
