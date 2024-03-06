@@ -11,15 +11,19 @@ namespace DAL.Implementations
     public class UnidadDeTrabajo : IUnidadDeTrabajo
     {
         public IShippersDAL _shippersDAL { get; }
+        public ISupplierDAL _supplierDAL { get; }
 
         private readonly NorthwindContext _context;
 
         public UnidadDeTrabajo(NorthwindContext northwindContext,
-                               IShippersDAL shippersDAL
+                               IShippersDAL shippersDAL,
+                               ISupplierDAL supplierDAL
+
                                 )
         {
             _context = new NorthwindContext();
             _shippersDAL = shippersDAL;
+            _supplierDAL = supplierDAL;
         }
 
         public bool Complete()
